@@ -1,0 +1,11 @@
+[user]
+	name = Tony Jin
+	email = tony.d.jin@gmail.com
+[core]
+	editor = vim
+[push]
+	default = simple
+[merge]
+	tool = vimdiff
+[diff]
+	tool = vimdiff
