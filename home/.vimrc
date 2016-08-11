@@ -58,6 +58,9 @@ set pastetoggle=<F2>
 
 set mouse=a
 
+set splitbelow
+set splitright
+
 let mapleader = "\<Space>"
 
 if &diff                             " only for diff mode/vimdiff
@@ -77,11 +80,11 @@ nmap <leader>sv :so $MYVIMRC<CR>
 nnoremap j gj
 nnoremap k gk
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> <C-w><C-h>
+map <C-j> <C-w><C-j>
+map <C-k> <C-w><C-k>
+map <C-l> <C-w><C-l>
 
 nnoremap <Leader>w :w<CR>
 nmap <Leader><Leader> V
-nnoremap <Leader>qq :qa<CR>
+nnoremap <Leader>qa :qa<CR>
