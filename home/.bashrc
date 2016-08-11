@@ -57,9 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\n\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -142,7 +142,7 @@ cd_func ()
     for ((cnt=1; cnt <= 10; cnt++)); do
       x2=$(dirs +${cnt} 2>/dev/null)
       [[ $? -ne 0 ]] && return 0
-      [[ ${x2:0:1} == '~' ]] && x ="${HOME}${x2:1}"
+      [[ ${x2:0:1} == '~' ]] && x2="${HOME}${x2:1}"
       if [[ "${x2}" == "${the_new_dir}" ]]; then
         popd -n +$cnt 2>/dev/null 1>/dev/null
         cnt=cnt-1
