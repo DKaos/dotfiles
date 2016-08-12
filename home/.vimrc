@@ -56,6 +56,10 @@ set noswapfile
 
 set pastetoggle=<F2>
 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 set mouse=a
 
 set splitbelow
