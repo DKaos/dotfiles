@@ -32,10 +32,11 @@ set number
 set hidden
 set nowrap
 set tabstop=4
+set shiftwidth=4
+set expandtab
 set backspace=indent,eol,start
 set autoindent
 set copyindent
-set shiftwidth=4
 set shiftround
 set showmatch
 set ignorecase
