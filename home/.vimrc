@@ -88,3 +88,4 @@ map <C-l> <C-w><C-l>
 nnoremap <Leader>w :w<CR>
 nmap <Leader><Leader> V
 nnoremap <Leader>qa :qa<CR>
+nnoremap <Leader>qq :q<CR>
