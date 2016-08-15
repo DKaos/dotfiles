@@ -128,8 +128,8 @@ nnoremap <Leader><Leader> <C-^>
 
 " save and exit keys
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>X :q!<CR>
-nnoremap <Leader>x :q<CR>
+nnoremap <Leader>Z :q!<CR>
+nnoremap <Leader>z :q<CR>
 
 " move to beginning/end of line
 nnoremap B ^
