@@ -164,10 +164,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-if [ -f ~/.local_bashrc ]; then
-    . ~/.local_bashrc
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -183,3 +179,7 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 homeshick --quiet refresh
+
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
