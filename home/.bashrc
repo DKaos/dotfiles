@@ -175,10 +175,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+# homeshick if installed
+if [ -d "$HOME/.homesick" ]; then
+    source "$HOME/.homesick/repos/homeshick/homeshick.sh" 
+    source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
-homeshick --quiet refresh
+    homeshick --quiet refresh
+fi
 
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
