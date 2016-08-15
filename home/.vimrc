@@ -12,6 +12,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'kien/ctrlp.vim' " fuzzy find files
+Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+Plugin 'tpope/vim-fugitive' " the ultimate git helper
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -44,9 +48,9 @@ set smartcase
 set smarttab
 set hlsearch
 set incsearch
+set autoread " detect when a file is changed
 
 set history=1000         " remember more commands and search history
-set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
 set novisualbell           " don't beep
@@ -55,13 +59,12 @@ set noerrorbells         " don't beep
 set nobackup
 set noswapfile
 
+set clipboard^=unnamed,unnamedplus
 set pastetoggle=<F2>
 
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
-set mouse=a
 
 set splitbelow
 set splitright
@@ -74,23 +77,48 @@ if &diff                             " only for diff mode/vimdiff
 	nmap <Leader>j ]c
 endif
 
-colorscheme Tomorrow-Night
 set t_Co=256
 syntax on
+colorscheme Tomorrow-Night
 
+" Keep undo history across sessions by storing it in a file
+let vimDir = '$HOME/.vim'
+let &runtimepath.=','.vimDir
 
-nmap <leader>ev :e $MYVIMRC<CR>
-nmap <leader>sv :so $MYVIMRC<CR>
+if has('persistent_undo')
+    let myUndoDir = expand(vimDir . '/undodir')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . myUndoDir)
+    let &undodir = myUndoDir
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
+endif
+
+nnoremap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>sv :so $MYVIMRC<CR>
+
+nnoremap <silent> <C-n> :nohl<CR>
 
 nnoremap j gj
 nnoremap k gk
 
-map <C-h> <C-w><C-h>
-map <C-j> <C-w><C-j>
-map <C-k> <C-w><C-k>
-map <C-l> <C-w><C-l>
+" tab movements
+noremap <Leader>h <ESC>:tabprevious<CR>
+noremap <Leader>l <ESC>:tabnext<CR>
 
+" easier moving of code blocks
+vnoremap < <gv " better indentation
+vnoremap > >gv " better indentation
+
+" resize panes
+nnoremap <silent> <Right> :vertical resize +5<cr>
+nnoremap <silent> <Left> :vertical resize -5<cr>
+nnoremap <silent> <Up> :resize +5<cr>
+nnoremap <silent> <Down> :resize -5<cr>
+
+nnoremap <Leader><Leader> <C-^>
 nnoremap <Leader>w :w<CR>
-nmap <Leader><Leader> V
 nnoremap <Leader>qa :qa<CR>
 nnoremap <Leader>qq :q<CR>
