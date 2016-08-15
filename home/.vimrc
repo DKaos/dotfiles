@@ -49,6 +49,7 @@ set smarttab
 set hlsearch
 set incsearch
 set autoread " detect when a file is changed
+set wildmenu
 
 set history=1000         " remember more commands and search history
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -99,10 +100,14 @@ endif
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
-nnoremap <silent> <C-n> :nohl<CR>
+nnoremap <silent> // :nohl<CR>
 
 nnoremap j gj
 nnoremap k gk
+
+" create window split easier
+nnoremap <silent> vv <C-w>v
+nnoremap <silent> ss <C-w>s
 
 " tab movements
 noremap <Leader>h <ESC>:tabprevious<CR>
@@ -118,7 +123,31 @@ nnoremap <silent> <Left> :vertical resize -5<cr>
 nnoremap <silent> <Up> :resize +5<cr>
 nnoremap <silent> <Down> :resize -5<cr>
 
+" fast file switch
 nnoremap <Leader><Leader> <C-^>
+
+" save and exit keys
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>qa :qa<CR>
-nnoremap <Leader>qq :q<CR>
+nnoremap <Leader>X :q!<CR>
+nnoremap <Leader>x :q<CR>
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" jk is escape in insert mode
+inoremap jk <esc>
+
+" NERDTree
+noremap <leader>t :NERDTreeToggle<CR>
+
+let NERDTreeIgnore = ['\.pyc$', '\.egg$', '\.o$', '\~$', '__pycache__$', '\.egg-info$']
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
