@@ -175,6 +175,13 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval "$(register-python-argcomplete conda)"
+
+# autoenv if installed
+if [ ! -z `which activate.sh` ]; then
+    source `which activate.sh`
+fi
+
 # homeshick if installed
 if [ -d "$HOME/.homesick" ]; then
     source "$HOME/.homesick/repos/homeshick/homeshick.sh" 

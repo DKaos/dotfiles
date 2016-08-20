@@ -16,6 +16,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'kien/ctrlp.vim' " fuzzy find files
 Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'tpope/vim-fugitive' " the ultimate git helper
+Plugin 'scrooloose/syntastic' " syntax highlighting
+Plugin 'tpope/vim-sensible' "sensible defaults
+Plugin 'klen/python-mode' "for python dev
+Plugin 'powerline/powerline' "status line
+Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -30,6 +35,10 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
 set relativenumber
 set number
 
@@ -98,7 +107,6 @@ if has('persistent_undo')
 endif
 
 nnoremap <leader>ev :e $MYVIMRC<CR>
-nnoremap <leader>sv :so $MYVIMRC<CR>
 
 nnoremap <silent> // :nohl<CR>
 
@@ -112,6 +120,9 @@ nnoremap <silent> ss <C-w>s
 " tab movements
 noremap <Leader>h <ESC>:tabprevious<CR>
 noremap <Leader>l <ESC>:tabnext<CR>
+
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
 
 " easier moving of code blocks
 vnoremap < <gv " better indentation
