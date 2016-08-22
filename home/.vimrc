@@ -13,14 +13,15 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'kien/ctrlp.vim' " fuzzy find files
-Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
+Plugin 'benmills/vimux' "interaction with tmux
+Plugin 'ctrlpvim/ctrlp.vim' " fuzzy find files
+"Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'tpope/vim-fugitive' " the ultimate git helper
-Plugin 'scrooloose/syntastic' " syntax highlighting
+"Plugin 'scrooloose/syntastic' " syntax highlighting
 Plugin 'tpope/vim-sensible' "sensible defaults
 Plugin 'klen/python-mode' "for python dev
-Plugin 'powerline/powerline' "status line
-Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
+"Plugin 'Lokaltog/vim-powerline' "status line
+"Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -83,8 +84,8 @@ let mapleader = "\<Space>"
 
 if &diff                             " only for diff mode/vimdiff
 	set diffopt=filler,context:1000000 " filler is default and inserts empty lines for sync
-	nmap <Leader>k [c
-	nmap <Leader>j ]c
+	nnoremap <Leader>k [c
+	nnoremap <Leader>j ]c
 endif
 
 set t_Co=256
@@ -141,22 +142,42 @@ nnoremap <Leader><Leader> <C-^>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>Z :q!<CR>
 nnoremap <Leader>z :q<CR>
+nnoremap <Leader>E :qa!<CR>
 
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
-
 " $/^ doesn't do anything
 nnoremap $ <nop>
 nnoremap ^ <nop>
 
 " jk is escape in insert mode
 inoremap jk <esc>
-
+ 
 " NERDTree
 noremap <leader>t :NERDTreeToggle<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.egg$', '\.o$', '\~$', '__pycache__$', '\.egg-info$']
+
+" Settings for ctrlp
+let g:ctrlp_max_height = 30
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
+
+" Settings for python-mode
+noremap <Leader>g :call RopeGotoDefinition()<CR>
+let ropevim_enable_shortcuts = 1
+let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_extended_complete = 1
+let g:pymode_breakpoint = 1 
+let g:pymode_syntax = 1
+let g:pymode_syntax_builtin_objs = 0
+let g:pymode_syntax_builtin_funcs = 0
+let g:pymode_rope_lookup_project = 0
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
