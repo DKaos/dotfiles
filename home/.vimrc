@@ -45,21 +45,27 @@ set number
 
 set hidden
 set nowrap
-set tabstop=4
+
+set tabstop=4 " number of space a tab is visually
 set shiftwidth=4
-set expandtab
-set backspace=indent,eol,start
+set expandtab " turn tab into spaces
+set smarttab
 set autoindent
 set copyindent
+
+set backspace=indent,eol,start
 set shiftround
-set showmatch
 set ignorecase
 set smartcase
-set smarttab
-set hlsearch
-set incsearch
+
+set hlsearch " highlight previous search pattern
+set incsearch " incremental search
+set showmatch " highlight matching [{()}]s
+
 set autoread " detect when a file is changed
-set wildmenu
+set wildmenu " menu for completion
+
+set lazyredraw
 
 set history=1000         " remember more commands and search history
 set wildignore=*.swp,*.bak,*.pyc,*.class
@@ -73,10 +79,6 @@ set noswapfile
 set clipboard^=unnamed,unnamedplus
 set pastetoggle=<F2>
 
-set tabstop=4
-set shiftwidth=4
-set expandtab
-
 set splitbelow
 set splitright
 
@@ -88,7 +90,6 @@ if &diff                             " only for diff mode/vimdiff
 	nnoremap <Leader>j ]c
 endif
 
-set t_Co=256
 syntax on
 colorscheme Tomorrow-Night
 
@@ -156,8 +157,10 @@ inoremap jk <esc>
  
 " NERDTree
 noremap <leader>t :NERDTreeToggle<CR>
-
-let NERDTreeIgnore = ['\.pyc$', '\.egg$', '\.o$', '\~$', '__pycache__$', '\.egg-info$']
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '\.egg$', '\.o$', '__pycache__$', '\.egg-info$']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
+let NERDTreeShowBookmarks=1
 
 " Settings for ctrlp
 let g:ctrlp_max_height = 30
@@ -169,15 +172,17 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
 " Settings for python-mode
-noremap <Leader>g :call RopeGotoDefinition()<CR>
 let ropevim_enable_shortcuts = 1
 let g:pymode_rope_goto_def_newwin = "vnew"
+let g:pymode_rope_goto_definition_bind = '<Leader>g'
 let g:pymode_rope_extended_complete = 1
 let g:pymode_breakpoint = 1 
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
 let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport_import_after_complete = 1 
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
