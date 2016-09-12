@@ -20,6 +20,7 @@ Plugin 'tpope/vim-fugitive' " the ultimate git helper
 "Plugin 'scrooloose/syntastic' " syntax highlighting
 Plugin 'tpope/vim-sensible' "sensible defaults
 Plugin 'klen/python-mode' "for python dev
+Plugin 'davidhalter/jedi-vim' " python autocomplete
 "Plugin 'Lokaltog/vim-powerline' "status line
 "Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
 " All of your Plugins must be added before the following line
@@ -172,17 +173,12 @@ set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
 " Settings for python-mode
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_goto_definition_bind = '<Leader>g'
-let g:pymode_rope_extended_complete = 1
+" autocmd FileType python PymodeLintAuto
 let g:pymode_breakpoint = 1 
 let g:pymode_syntax = 1
 let g:pymode_syntax_builtin_objs = 0
 let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_autoimport = 1
-let g:pymode_rope_autoimport_import_after_complete = 1 
+let g:pymode_rope = 0
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
