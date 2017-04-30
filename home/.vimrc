@@ -21,6 +21,7 @@ Plugin 'tpope/vim-fugitive' " the ultimate git helper
 Plugin 'tpope/vim-sensible' "sensible defaults
 Plugin 'klen/python-mode' "for python dev
 Plugin 'davidhalter/jedi-vim' " python autocomplete
+Plugin 'easymotion/vim-easymotion' " python autocomplete
 "Plugin 'Lokaltog/vim-powerline' "status line
 "Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
 " All of your Plugins must be added before the following line
