@@ -114,7 +114,7 @@ export EDITOR=vi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bashrc.proxy]; then
+if [ -f ~/.bashrc.proxy ]; then
     . ~/.bashrc.proxy
 fi
 
