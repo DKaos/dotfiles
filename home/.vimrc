@@ -125,6 +125,10 @@ nnoremap <silent> ss <C-w>s
 noremap <Leader>h <ESC>:tabprevious<CR>
 noremap <Leader>l <ESC>:tabnext<CR>
 
+" buffer cycles
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
 
