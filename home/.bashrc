@@ -105,6 +105,7 @@ alias vim="vim -b"
 alias h=history
 
 alias apt-get='sudo apt-get'
+alias apt='sudo apt'
 
 # Use vi/vim as editor
 export EDITOR=vi
