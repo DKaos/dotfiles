@@ -110,6 +110,9 @@ alias apt='sudo apt'
 # Use vi/vim as editor
 export EDITOR=vi
 
+# Disable ctrl-s (stop) ctrl-q (start) flow for programs
+stty -ixon
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
