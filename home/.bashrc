@@ -108,6 +108,7 @@ alias vim="vim -b"
 alias h=history
 
 alias a='sudo apt-get'
+alias mkd='mkdir -pv'
 
 # Use vi/vim as editor
 export EDITOR=vi
