@@ -1,5 +1,4 @@
 $include /etc/Inputrc
 
-"\C-s": beginning-of-line
-"\C-o": kill-line
+set editing-mode vi
 

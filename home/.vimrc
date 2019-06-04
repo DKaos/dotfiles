@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let mapleader = "\<Space>"
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -84,8 +86,6 @@ set pastetoggle=<F2>
 set splitbelow
 set splitright
 
-let mapleader = "\<Space>"
-
 if &diff                             " only for diff mode/vimdiff
 	set diffopt=filler,context:1000000 " filler is default and inserts empty lines for sync
 	nnoremap <Leader>k [c
@@ -129,9 +129,6 @@ noremap <Leader>l <ESC>:tabnext<CR>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 
-" map sort function to a key
-vnoremap <Leader>s :sort<CR>
-
 " easier moving of code blocks
 vnoremap < <gv " better indentation
 vnoremap > >gv " better indentation
@@ -150,13 +147,6 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>Z :q!<CR>
 nnoremap <Leader>z :q<CR>
 nnoremap <Leader>E :qa!<CR>
-
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
 " jk is escape in insert mode
 inoremap jk <esc>
