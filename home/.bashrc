@@ -113,6 +113,9 @@ alias mkd='mkdir -pv'
 # Use vi/vim as editor
 export EDITOR=vi
 
+# Add pwd to path
+export PATH=.:$PATH
+
 # Disable ctrl-s (stop) ctrl-q (start) flow for programs
 stty -ixon
 
