@@ -140,7 +140,7 @@ nnoremap <silent> <Up> :resize +5<cr>
 nnoremap <silent> <Down> :resize -5<cr>
 
 " fast file switch
-nnoremap <Leader><Leader> <C-^>
+" nnoremap <Leader><Leader> <C-^>
 
 " save and exit keys
 nnoremap <Leader>w :w<CR>
