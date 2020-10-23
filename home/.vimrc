@@ -12,11 +12,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'scrooloose/nerdtree.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'benmills/vimux' "interaction with tmux
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy find files
+"Plugin 'ctrlpvim/ctrlp.vim' " fuzzy find files
 "Plugin 'tpope/vim-commentary' " comment/uncomment lines with gcc or gc in visual mode
 Plugin 'tpope/vim-fugitive' " the ultimate git helper
 "Plugin 'scrooloose/syntastic' " syntax highlighting
@@ -24,6 +23,8 @@ Plugin 'tpope/vim-sensible' "sensible defaults
 "Plugin 'klen/python-mode' "for python dev
 "Plugin 'davidhalter/jedi-vim' " python autocomplete
 Plugin 'easymotion/vim-easymotion' " python autocomplete
+Plugin 'junegunn/goyo.vim'
+Plugin 'bling/vim-airline'
 "Plugin 'Lokaltog/vim-powerline' "status line
 "Plugin 'jistr/vim-nerdtree-tabs' "nerdtree in independent tabs
 " All of your Plugins must be added before the following line
@@ -41,8 +42,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Add fuzzy search feature
+set path+=**
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
+autocmd! bufwritepost *.{cls,tex} make all >/dev/null
 
 set relativenumber
 set number
@@ -151,29 +157,8 @@ nnoremap <Leader>E :qa!<CR>
 " jk is escape in insert mode
 inoremap jk <esc>
  
-" NERDTree
-noremap <leader>t :NERDTreeToggle<CR>
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '\.egg$', '\.o$', '__pycache__$', '\.egg-info$']
-let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-let NERDTreeShowBookmarks=1
-
-" Settings for ctrlp
-let g:ctrlp_max_height = 30
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-
-" Settings for python-mode
-" autocmd FileType python PymodeLintAuto
-let g:pymode_breakpoint = 1 
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_rope = 0
+"Goyo plugin
+nnoremap <leader>f :Goyo \| set bg=light \| set linebreak \| colorscheme Tomorrow-Night \| set wrap<CR>
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
