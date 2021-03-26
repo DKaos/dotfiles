@@ -1,6 +1,6 @@
 [user]
 	name = Tony Jin
-	email = tony.jin@scotiabank.com
+	email = tony.jin@stonex.com
 [core]
 	editor = vim
 [push]
@@ -29,3 +29,5 @@
     assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
     lasttag = describe --tags --abbrev=0
     lt = describe --tags --abbrev=0
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe
