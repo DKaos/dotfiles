@@ -154,3 +154,7 @@ fi
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
+
+if  command -v zoxide &> /dev/null; then
+    eval "$(zoxide init bash)"
+fi
